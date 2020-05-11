@@ -4,7 +4,7 @@
  * @Author: Leo
  * @Date: 2020-05-09 20:16:23
  * @LastEditors: Leo
- * @LastEditTime: 2020-05-11 10:22:42
+ * @LastEditTime: 2020-05-11 10:28:09
  */
 var express = require("express");
 var Tiny = require("tiny");
@@ -27,11 +27,11 @@ Tiny("gallery", function (err, db) {
       data.length != undefined ? data.length : Object.keys(data).length - 1;
     data = Array.from(data);
 
-    app.get("/", function (req, res) {
+    app.get("/gallery", function (req, res) {
       res.send({ success: true, data });
     });
 
-    app.post("/", upload.single("file"), function (req, res) {
+    app.post("/gallery", upload.single("file"), function (req, res) {
       let media = {
         filename: req.file.filename,
         title: req.body.title,
