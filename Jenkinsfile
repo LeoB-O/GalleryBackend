@@ -3,12 +3,13 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'sudo npm install --unsafe-perm=true --allow-root'
+                sh 'npm install'
             }
         }
         stage('deliver') {
             steps {
                 sh 'npm start'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
     }
