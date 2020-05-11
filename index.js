@@ -4,14 +4,20 @@
  * @Author: Leo
  * @Date: 2020-05-09 20:16:23
  * @LastEditors: Leo
- * @LastEditTime: 2020-05-11 10:36:07
+ * @LastEditTime: 2020-05-11 13:07:11
  */
 var express = require("express");
 var Tiny = require("tiny");
 var multer = require("multer");
 var cors = require("cors");
 
-var upload = multer({ dest: "uploads/" });
+var storage = multer.diskStorage({
+  destination: "uploads/",
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+var upload = multer({ storage });
 var app = express();
 
 app.use(cors());
@@ -43,7 +49,7 @@ Tiny("gallery", function (err, db) {
     });
 
     app.listen(process.env.PORT || 4001, function () {
-      console.log("Example app listening on port 4000!");
+      console.log(`Example app listening on port ${process.env.PORT || 4001}!`);
     });
   });
 });
