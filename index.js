@@ -4,7 +4,7 @@
  * @Author: Leo
  * @Date: 2020-05-09 20:16:23
  * @LastEditors: Leo
- * @LastEditTime: 2020-05-11 10:28:09
+ * @LastEditTime: 2020-05-11 10:36:07
  */
 var express = require("express");
 var Tiny = require("tiny");
@@ -15,7 +15,7 @@ var upload = multer({ dest: "uploads/" });
 var app = express();
 
 app.use(cors());
-app.use(express.static("uploads"));
+app.use("/gallery", express.static("uploads"));
 
 Tiny("gallery", function (err, db) {
   db.get("media", function (err, data) {
