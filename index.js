@@ -4,7 +4,7 @@
  * @Author: Leo
  * @Date: 2020-05-09 20:16:23
  * @LastEditors: Leo
- * @LastEditTime: 2020-05-09 22:38:37
+ * @LastEditTime: 2020-05-11 10:22:42
  */
 var express = require("express");
 var Tiny = require("tiny");
@@ -42,7 +42,7 @@ Tiny("gallery", function (err, db) {
       res.send({ success: true, data: { ...req.file, ...media } });
     });
 
-    app.listen(4000, function () {
+    app.listen(process.env.PORT || 4001, function () {
       console.log("Example app listening on port 4000!");
     });
   });
