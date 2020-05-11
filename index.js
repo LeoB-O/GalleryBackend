@@ -4,7 +4,7 @@
  * @Author: Leo
  * @Date: 2020-05-09 20:16:23
  * @LastEditors: Leo
- * @LastEditTime: 2020-05-11 13:07:11
+ * @LastEditTime: 2020-05-11 13:48:18
  */
 var express = require("express");
 var Tiny = require("tiny");
@@ -12,7 +12,7 @@ var multer = require("multer");
 var cors = require("cors");
 
 var storage = multer.diskStorage({
-  destination: "uploads/",
+  destination: "uploads/gallery/",
   filename: function (req, file, cb) {
     cb(null, Date.now() + "-" + file.originalname);
   },
