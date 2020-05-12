@@ -1,3 +1,4 @@
 node_modules/*
 uploads/*
 gallery
+.DS_Store
